@@ -218,6 +218,11 @@ var TypeaheadView = (function() {
           utils.defer(this.dropdownView.close) : this.dropdownView.close();
 
         this.eventBus.trigger('selected', suggestion.datum, suggestion.dataset);
+      }else{
+        var query = this.inputView.getQuery();
+        if(query.length > 3){
+            this.eventBus.trigger("freetext", query);  
+        }
       }
     },
 
